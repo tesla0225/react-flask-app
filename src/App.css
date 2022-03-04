@@ -22,6 +22,7 @@
 .chat {
   list-style-type: none;
   width: 100%;
+  padding-bottom: 4%;
 }
 .chat-item {
   /* display: grid;

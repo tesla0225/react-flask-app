@@ -95,7 +95,7 @@ function App() {
                     placeholder="ここに文字を入れる"
                   ></input>
                   <button ref={scrollBottomRef} type="submit">
-                    送信
+                    送信 / 更新
                   </button>
                 </form>
               </div>

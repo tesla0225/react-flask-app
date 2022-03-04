@@ -5,7 +5,7 @@ app = Flask(__name__, static_folder='../build', static_url_path='/')
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-SLACK_ACCESS_TOKEN ='xoxb-3083027697062-3161652459141-5j9JbmA07psLrTSpuLQGeGMs'
+SLACK_ACCESS_TOKEN =''
 # Slackクライアントを作成
 client = WebClient(SLACK_ACCESS_TOKEN)
 
@@ -26,7 +26,7 @@ def get_current_time():
 @app.route('/api/history', methods=["GET", "POST"])
 def get_chathistory():
     try:
-        response = client.conversations_replies(channel='C032ML8QYDQ',ts=request.form["ts"])
+        response = client.conversations_replies(channel='C032MLAPTPU',ts=request.form["ts"])
         return {"data":response["messages"]}
     except SlackApiError as e:
         # You will get a SlackApiError if "ok" is False
@@ -37,7 +37,7 @@ def get_chathistory():
 @app.route('/api/chat', methods=["GET", "POST"])
 def get_chatstart():
     try:
-        response = client.chat_postMessage(channel='#random', text=request.form["text"],thread_ts=request.form["ts"])
+        response = client.chat_postMessage(channel='C032MLAPTPU', text=request.form["text"],thread_ts=request.form["ts"])
        # assert response["message"]["text"] == request.form["text"]
         return response["ts"]
     except SlackApiError as e:
